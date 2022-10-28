@@ -9,11 +9,13 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.setState({
-      
-    })
+this.loadPosts().then(response)
   }
 
+  loadPosts = async () => {
+    const postsResponse = fetch('https://jsonplaceholder.typicode.com/posts');
+    
+  }
 
 
 
@@ -23,12 +25,12 @@ class App extends Component {
 
     return (
       <div className="App">
-      {posts.map(post => (
-        <div key={post.id}>
-        <h1>{post.title}</h1>
-        <p>{post.body}</p>
-        </div>
-      ))}
+        {posts.map(post => (
+          <div key={post.id}>
+            <h1>{post.title}</h1>
+            <p>{post.body}</p>
+          </div>
+        ))}
       </div>
     );
   }
